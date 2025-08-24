@@ -20,10 +20,9 @@ class ViewController: UIViewController {
     
     @IBAction func goToReactNativeScreen(_ sender: UIButton) {
         if reactViewController == nil {
-            reactViewController = ReactViewController()
+            reactViewController = ReactViewController(moduleName: "MyHybridApp")
         }
         guard let reactViewController else { return }
-        present(reactViewController, animated: true)
-//        self.navigationController?.pushViewController(reactViewController, animated: true)
+        navigationController?.pushViewController(reactViewController, animated: true)
     }
 }
