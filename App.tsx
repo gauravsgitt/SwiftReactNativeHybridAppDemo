@@ -5,9 +5,10 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { StatusBar, Text, useColorScheme, View } from 'react-native';
 import {
+  EdgeInsets,
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
@@ -23,24 +24,21 @@ function App() {
   );
 }
 
+const getContainerStyle = (safeAreaInsets: EdgeInsets): ViewStyle => ({
+  flex: 1,
+  // paddingTop: safeAreaInsets.top,
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 function AppContent() {
   const safeAreaInsets = useSafeAreaInsets();
 
   return (
-    <View style={styles.container}>
-      {/* <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      /> */}
+    <View style={getContainerStyle(safeAreaInsets)}>
       <Text>This is my React Native Screen</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
